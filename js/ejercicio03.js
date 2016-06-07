@@ -4,8 +4,8 @@ function Sala() {
   this.llena = function () { return this.capacidad == 0 ? true : false };
 
   this.ingresar = function (alumno) {
-    if (alumno.mayorDeEdad) {
-      if (!this.llena) {
+    if (alumno.mayorDeEdad()) {
+      if (!this.llena()) {
         this.capacidad --;
       }else {
         console.log("La Sala esta llena, debe crear otra");
