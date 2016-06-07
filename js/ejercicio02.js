@@ -1,5 +1,5 @@
 function Caja(saldo) {
-  this.saldo = inicio || 0;
+  this.saldo = saldo || 0;
 
   this.in = function (monto) {
     this.saldo += monto;
