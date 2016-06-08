@@ -14,4 +14,4 @@ for (var i = 0; i < cantidad; i++) {
 document.write("<h1>Elementos en orden inverso</h1>");
 document.write("<ul>");
 elementos.reverse().forEach(function(e){ document.write("<li>"+e+"</li>") });
-document.write("<ul>");
+document.write("</ul>");
