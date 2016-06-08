@@ -14,6 +14,19 @@ function Usuario(email, password, edad, activo, fecha_reg, full_name) {
   this.activo = activo;
   this.fecha_reg = fecha_reg;
   this.full_name = full_name == undefined ? "" : full_name.trim();
+  // METODOS
+
+  // ESTADO: devuelve TRUE si esta activo y FALSE si esta inactivo
+  this.estado = function() { return this.activo == true ? true : false };
+
+  // GET_FULL_NAME: devuelve el string si existe si no devuelve false.
+  this.get_full_name = function() { return this.full_name.length == 0 ? false : this.full_name };
+
+  // MAYOR: devuelve TRUE si es mayor y false en caso contrario.
+  this.mayor = function() { return this.edad >= 18 ? true : false };
+
+  // TO_STRING: devuelve una cadena con información del objeto.
+  this.to_string = function() { return this.full_name+" ("+this.edad+") ["+this.activo+"]"}
 }
 
 var usuarios = [];
@@ -60,44 +73,44 @@ var usuario_t = new Usuario("correo@domino.com","****", 17, false, "07/06/2016" 
 usuarios.push(usuario_t);
 
 var usuarios_activos = usuarios.filter(function(e) {
-  return e.activo;
+  return e.estado();
 })
 
 var usuarios_inactivos = usuarios.filter(function(e) {
-  return !e.activos;
+  return !e.estado();
 })
 
 var usuarios_menores = usuarios.filter(function(e) {
-  return e.edad < 18;
+  return !e.mayor();
 })
 
 var usuarios_sin_nombre = usuarios.filter(function(e) {
-  return e.full_name.length == 0;
+  return !e.get_full_name();
 })
 
 // Imprimir resultados
 // Inactivos
 document.write("<h1>Inactivos</h1>");
 document.write("<ul>");
-usuarios_inactivos.forEach(function(e){document.write("<li>"+e.full_name+" "+e.estado+"</li>")});
+usuarios_inactivos.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 // Activos
 document.write("<h1>Activos</h1>");
 document.write("<ul>");
-usuarios_activos.forEach(function(e){document.write("<li>"+e.full_name+" "+e.estado+"</li>")});
+usuarios_activos.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 //menoers
 document.write("<h1>Menores</h1>");
 document.write("<ul>");
-usuarios_menores.forEach(function(e){document.write("<li>"+e.full_name+" "+e.edad+"</li>")});
+usuarios_menores.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 //sin nombre
 document.write("<h1>Sin Nombre</h1>");
 document.write("<ul>");
-usuarios_sin_nombre.forEach(function(e){document.write("<li>"+e.full_name+" "+e.estado+"</li>")});
+usuarios_sin_nombre.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 // TODOS
-document.write("<h1>todos</h1>");
+document.write("<h1>Todos</h1>");
 document.write("<ul>");
-usuarios.forEach(function(e){document.write("<li>"+e.full_name+" "+e.estado+"</li>")});
+usuarios.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
