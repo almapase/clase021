@@ -14,8 +14,8 @@ function Usuario(email, password, edad, activo, fecha_reg, full_name) {
   this.activo = activo;
   this.fecha_reg = fecha_reg;
   this.full_name = full_name == undefined ? "" : full_name.trim();
-  // METODOS
 
+  // METODOS
   // ESTADO: devuelve TRUE si esta activo y FALSE si esta inactivo
   this.estado = function() { return this.activo == true ? true : false };
 
@@ -88,29 +88,32 @@ var usuarios_sin_nombre = usuarios.filter(function(e) {
   return !e.get_full_name();
 })
 
-// Imprimir resultados
+// Imprimir enunciado
+document.write("<h1>ejercicio05</h1><ul><li>Crear una clase de usuario, el usuario debe recibir correo electrónico, contraseña, edad, estado de activo o inactivo (true-false), fecha de registro y nombre completo.</li><li>Crear 20 instancias de usuarios, 10 inactivos, 10 activos, 5 menores de edad, y 3 sin nombre.</li><li>Agregar todas las instancias de usuarios a un arreglo.</li><li>Una vez con todos los usuarios en el arreglo, crear 4 arreglos nuevos.</li><li>Estos cuatro arreglos deben contener a los usuarios sin nombre, activos, inactivos y menores de edad.</li><li>Para esto el arreglo de usuarios DEBE iterarse!, NO SE PUEDEN AGREGAR MANUALMENTE CADA USUARIO A SU RESPECTIVO ARREGLO!</li></ul>");
+//Imprimir Resulados
+document.write("<h1>Resultados</h1>")
 // Inactivos
-document.write("<h1>Inactivos</h1>");
+document.write("<h2>Inactivos</h2>");
 document.write("<ul>");
 usuarios_inactivos.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 // Activos
-document.write("<h1>Activos</h1>");
+document.write("<h2>Activos</h2>");
 document.write("<ul>");
 usuarios_activos.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 //menoers
-document.write("<h1>Menores</h1>");
+document.write("<h2>Menores</h2>");
 document.write("<ul>");
 usuarios_menores.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 //sin nombre
-document.write("<h1>Sin Nombre</h1>");
+document.write("<h2>Sin Nombre</h2>");
 document.write("<ul>");
 usuarios_sin_nombre.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
 // TODOS
-document.write("<h1>Todos</h1>");
+document.write("<h2>Todos</h2>");
 document.write("<ul>");
 usuarios.forEach(function(e){document.write("<li>"+e.to_string()+"</li>")});
 document.write("</ul>");
